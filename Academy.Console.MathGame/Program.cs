@@ -4,6 +4,8 @@ string name = GetName();
 
 Menu(name);
 
+Console.WriteLine("Git Push Test");
+
 string GetName()
 {
     Console.WriteLine("Please type your name");
@@ -14,7 +16,7 @@ string GetName()
 void Menu(string name)
 {
     Console.WriteLine("---------------------------------------------");
-    Console.WriteLine($"Hello {name.ToUpper()}. It's {date}. This is your math's game. That's great that you're working on improving yourself\n");
+    Console.WriteLine($"Hello {name.ToUpper()}. It's {date}. This is your math game. It's great that you're working on improving yourself\n");
     Console.WriteLine(@$"What game would you like to play today? Choose from the options below:
 A - Addition
 S - Subtraction
