@@ -5,6 +5,7 @@ string name = GetName();
 Menu(name);
 
 Console.WriteLine("Git Push Test");
+Console.WriteLine("Git Pull Test");
 
 string GetName()
 {
