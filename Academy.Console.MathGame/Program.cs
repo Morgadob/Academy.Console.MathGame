@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace MathProgramCommandLine
 {
@@ -111,12 +112,17 @@ namespace MathProgramCommandLine
                     }
 
                     if (i == 4) Console.WriteLine($"Game over. Your final score is {score}. Pretty any key to go back to the main menu");
-                    Console.WriteLine();
+                    Console.ReadLine();
 
 
-                    games.Add($"{DateTime.Now} - Addition: Score = {score}");
+                    //games.Add($"{DateTime.Now} - Addition: Score = {score}");
 
                 }
+
+                AddToHistory(score, "Addition");
+
+
+
             }
 
             void SubtractionGame(string message)
@@ -153,6 +159,7 @@ namespace MathProgramCommandLine
                     if (i == 4) Console.WriteLine($"Game over. Your final score is {score}");
                 }
 
+                AddToHistory(score, "Subtraction");
             }
 
             void MultiplicationGame(string message)
@@ -191,17 +198,25 @@ namespace MathProgramCommandLine
 
                     if (i == 4) Console.WriteLine($"Game over. Your final score is {score}");
                 }
+
+                AddToHistory(score, "Multiplication");
             }
 
             void DivisionGame(string message)
             {
+
+                var score = 0;
+                var divisionNumbers = GetDivisionNumbers();
+
+                
+
+
                 for (int i=0; i < 5; i++)
                 {
                     Console.Clear();
                     Console.WriteLine(message);
 
-                    var score = 0;
-                    var divisionNumbers = GetDivisionNumbers();
+                    
                     var firstNumber = divisionNumbers[0];
                     var secondNumber = divisionNumbers[1];
 
@@ -223,7 +238,15 @@ namespace MathProgramCommandLine
                     if (i == 4) Console.WriteLine($"Game over. Your final score is {score}");
                 }
 
+                AddToHistory(score, "Division");
+
             }
+
+            void AddToHistory(int gameScore, string gameType)
+            {
+                games.Add($"{DateTime.Now} - {gameType}: Score={gameScore}");
+            }
+
 
             int[] GetDivisionNumbers()
             {
@@ -263,6 +286,6 @@ namespace MathProgramCommandLine
             }
         }
 
-        
+       
     }
 }
